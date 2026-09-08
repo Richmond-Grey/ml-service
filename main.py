@@ -11,10 +11,8 @@ import numpy as np
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-# Define Model Path (checking ml-service directory and parent directory)
-MODEL_PATH = Path("leak_model.pkl")
-if not MODEL_PATH.exists():
-    MODEL_PATH = Path("../leak_model.pkl")
+# Define Model Path (strictly use the model inside the ml-service directory)
+MODEL_PATH = Path(__file__).resolve().parent / "leak_model.pkl"
 
 model = None
 
